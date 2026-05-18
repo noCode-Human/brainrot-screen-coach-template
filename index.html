@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brainrot Screen Coach</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='50' font-size='46'%3E%F0%9F%A7%A0%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="appShell">
+    <nav class="rail" aria-label="App sections">
+      <a class="railLogo active" href="#top" aria-label="Home">
+        <span>🧠</span>
+      </a>
+      <a href="#top" aria-label="Dashboard">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5v8a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1v-8Z"/></svg>
+      </a>
+      <a href="#historyCard" aria-label="History">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 16 5-6 4 4 7-9"/><path d="M4 20h16"/></svg>
+      </a>
+      <a href="#sharePanel" aria-label="Share">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.7 6.8-4.4M8.6 13.3l6.8 4.4"/></svg>
+      </a>
+      <a href="#templateNotes" aria-label="Template notes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.57V21a2 2 0 0 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.57 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.57-1.04H3a2 2 0 0 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.89a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.57V3a2 2 0 0 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.57 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9c.1.35.27.68.5.96.32.39.8.6 1.3.6h.1a2 2 0 0 1 0 4h-.1c-.5 0-.98.21-1.3.6-.23.28-.4.6-.5.96Z"/></svg>
+      </a>
+    </nav>
+
+    <section class="dashboard" id="top">
+      <div class="mainPanel">
+        <header class="topbar">
+          <div>
+            <h1>Brainrot Screen Coach</h1>
+            <p>Keep your tiny brain alive <span aria-hidden="true">♥</span></p>
+          </div>
+          <div class="streakPill" aria-label="Current streak">🔥 2 day streak</div>
+        </header>
+
+        <section class="heroGrid">
+          <form class="panel scrollCard" id="usageForm">
+            <div class="cardHead">
+              <h2>Today's scroll</h2>
+              <button type="button" id="resetBtn" class="ghost small">Reset</button>
+            </div>
+            <p class="bigMetric"><strong id="totalMinutes">0m</strong></p>
+            <p class="subMetric">of doomscrolling 😧</p>
+            <p class="goalText">Daily goal: <strong>2h 30m</strong></p>
+            <div class="goalTrack" aria-hidden="true">
+              <span id="goalFill"></span>
+              <i id="goalKnob"></i>
+            </div>
+            <div class="scale">
+              <span>0m</span>
+              <span>2h 30m</span>
+              <span>6h</span>
+            </div>
+            <div class="tip">
+              <span>🧠</span>
+              <p><strong id="goalDelta">Add scroll minutes.</strong><br />Your future self will thank you.</p>
+            </div>
+            <details class="appMix">
+              <summary>Adjust app mix</summary>
+              <div id="sliders" class="sliders" aria-live="polite"></div>
+            </details>
+            <button class="primary" type="submit">Save today</button>
+          </form>
+
+          <section class="brainStage panel" aria-labelledby="brainTitle">
+            <div class="sparkles" aria-hidden="true">✦ ✚ ✦</div>
+            <div id="brain" class="brainMascot" role="img" aria-label="Happy brain pet at 100/100 health">
+              <img id="brainPet" src="assets/mascots/brain-pet-default.png" alt="" />
+            </div>
+            <div class="healthBlock">
+              <h2 id="brainTitle">Brain health <span class="info">i</span></h2>
+              <p class="healthScore"><strong id="scoreNumber">100</strong> / 100 <span id="statusPill" class="statusPill">On track</span></p>
+              <div class="segments" id="segments" aria-label="Brain health segments"></div>
+              <p id="diagnosis" class="diagnosis">Too much scroll rots focus. Recover to rebuild your brain.</p>
+            </div>
+          </section>
+
+          <section class="panel recovery" aria-labelledby="recoveryTitle">
+            <h2 id="recoveryTitle">Recovery room</h2>
+            <div class="ring" id="focusRing" aria-label="Focus timer progress">
+              <div>
+                <span>Focus time</span>
+                <strong id="timer">25:00</strong>
+                <small>🧠</small>
+              </div>
+            </div>
+            <label for="focusMinutes">Focus minutes</label>
+            <input id="focusMinutes" type="range" min="5" max="60" step="5" value="25" />
+            <div class="row">
+              <button id="startFocus" class="primary" type="button">Start focus</button>
+              <button id="stopFocus" class="ghost" type="button">Stop</button>
+            </div>
+            <p>Take a break. Save your brain.</p>
+          </section>
+        </section>
+
+        <section class="panel history" id="historyCard" aria-labelledby="historyTitle">
+          <div>
+            <h2 id="historyTitle">7-day history</h2>
+            <div class="chart" id="historyChart" aria-label="Seven day scroll history"></div>
+          </div>
+          <div class="bestDay">
+            <span>🏆</span>
+            <p>Best day</p>
+            <strong id="bestDayText">No saves yet</strong>
+            <small>Keep stacking those wins.</small>
+          </div>
+        </section>
+
+        <section class="panel templateNotes" id="templateNotes" aria-labelledby="templateNotesTitle">
+          <h2 id="templateNotesTitle">Template notes</h2>
+          <p>This is a front-end prototype: manual screen-time sliders, local browser history, focus timer, and copyable share text. Swap the data layer for Screen Time, Supabase, or your own API when you build the real app.</p>
+        </section>
+      </div>
+
+      <aside class="sharePanel panel" id="sharePanel" aria-labelledby="shareTitle">
+        <h2 id="shareTitle">Share card</h2>
+        <article class="shareCard good">
+          <div>
+            <h3>My brain today</h3>
+            <p><strong id="shareHealth">100</strong> / 100</p>
+            <span id="shareMinutes">0m scrolled</span>
+            <small>Brainrot Screen Coach<br />Keep your tiny brain alive ♥</small>
+          </div>
+          <img class="miniBrain statePet" src="assets/mascots/brain-pet-default.png" alt="" />
+        </article>
+        <article class="shareCard bad">
+          <div>
+            <h3>I scrolled</h3>
+            <p><strong id="shareTotal">0m</strong></p>
+            <span>My brain is <b id="shareHealthBad">100</b> / 100</span>
+            <small>Brainrot Screen Coach<br />Keep your tiny brain alive ♥</small>
+          </div>
+          <img class="miniBrain statePet" src="assets/mascots/brain-pet-default.png" alt="" />
+        </article>
+        <p id="shareText" class="srOnly">My brain is 100/100 after 0m of scrolling today.</p>
+        <button id="copyShare" class="primary shareButton" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4"/></svg>
+          Copy share
+        </button>
+        <p id="copyStatus" class="muted" role="status"></p>
+      </aside>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
